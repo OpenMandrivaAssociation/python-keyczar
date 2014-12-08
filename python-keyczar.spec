@@ -1,6 +1,6 @@
 Name:           python-keyczar
 Version:        0.71c
-Release:        %mkrel 1
+Release:        1
 Summary:        Toolkit for safe and simple cryptography
 
 Group:          Development/Python
@@ -10,10 +10,10 @@ Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{vers
 
 BuildArch:      noarch
 
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pycrypto%{?_isa}
-BuildRequires:  python-pyasn1
+BuildRequires:  python2-devel
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pycrypto%{?_isa}
+BuildRequires:  python2-pyasn1
 
 
 %description
@@ -21,32 +21,32 @@ Keyczar is an open source cryptographic toolkit designed to make it easier and
 safer for developers to use cryptography in their applications. Keyczar
 supports authentication and encryption with both symmetric and asymmetric keys.
 
+%package -n python2-keyczar
+Summary:        Toolkit for safe and simple cryptography
+Group:          Development/Python
+
+%description -n python2-keyczar
+Keyczar is an open source cryptographic toolkit designed to make it easier and
+safer for developers to use cryptography in their applications. Keyczar
+supports authentication and encryption with both symmetric and asymmetric keys.
 
 %prep
 %setup -q
 rm -rf python_keyczar.egg-info
+# As of 0.71c, there is no python3 support yet
 
 %build
-%{__python} setup.py build
+python2 setup.py build
 
 %check
 cd tests/keyczar_tests
-PYTHONPATH=$PYTHONPATH:../../src/ ./alltests.py
+PYTHONPATH=$PYTHONPATH:../../src/ python2 ./alltests.py
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+python2 setup.py install -O1 --skip-build --root %{buildroot}
 rm -rf %{buildroot}/usr/bin/keyczart
 
-%files
+%files -n python2-keyczar
 %doc README LICENSE doc/pycrypt.pdf
-%{python_sitelib}/keyczar/
-%{python_sitelib}/python_keyczar-*.egg-info
-
-
-
-
-%changelog
-* Mon Nov 11 2013 philippem <philippem> 0.71c-1.mga4
-+ Revision: 550494
-- imported package python-keyczar
-
+%{python2_sitelib}/keyczar/
+%{python2_sitelib}/python_keyczar-*.egg-info
