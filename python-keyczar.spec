@@ -1,6 +1,6 @@
 Name:           python-keyczar
 Version:        0.71c
-Release:        1
+Release:        2
 Summary:        Toolkit for safe and simple cryptography
 
 Group:          Development/Python
