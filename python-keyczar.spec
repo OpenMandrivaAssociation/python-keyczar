@@ -1,3 +1,7 @@
+
+Important note: Keyczar is deprecated. The Keyczar developers recommend Tink.
+
+
 Name:           python-keyczar
 Version:        0.71c
 Release:        3
