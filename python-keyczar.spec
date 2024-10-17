@@ -9,7 +9,7 @@ Summary:        Toolkit for safe and simple cryptography
 
 Group:          Development/Python
 License:        ASL 2.0
-URL:            http://www.keyczar.org/
+URL:            https://www.keyczar.org/
 Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
